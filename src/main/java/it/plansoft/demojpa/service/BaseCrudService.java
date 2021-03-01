@@ -11,7 +11,7 @@ import it.plansoft.demojpa.service.interfaces.ICrudService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
 public class BaseCrudService<REPOSITORY extends JpaRepository<MODEL, ID>, MODEL, ID> implements ICrudService<MODEL, ID> {
 

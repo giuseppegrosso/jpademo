@@ -13,7 +13,7 @@ spring:
       hibernate:
         format_sql=true: true
   datasource:
-    url: jdbc:sqlite:C:/Users/ggrosso/GiuseppeGrossoFolder/Documenti/personale/corsi/personale/Coros_java_spring_boot_avanzato/workspace/jpademo/src/main/resources/jpademo.db
+    url: jdbc:sqlite:src/main/resources/jpademo.db
     driver-class-name: org.sqlite.JDBC
 #    username: admin
 #    password: admin

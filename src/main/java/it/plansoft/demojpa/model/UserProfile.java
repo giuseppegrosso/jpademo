@@ -1,10 +1,9 @@
 package it.plansoft.demojpa.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -12,6 +11,7 @@ import java.util.Date;
 
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @ToString
 @Entity
@@ -21,6 +21,10 @@ public class UserProfile extends BaseId<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public Long getId() {
+        return id;
+    }
 
     @Enumerated(EnumType.STRING)
     @Column(name = "sesso", length = 10)
@@ -50,7 +54,8 @@ public class UserProfile extends BaseId<Long> {
     @JsonIgnore
     private User user;
 
-    public UserProfile() {
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public UserProfile(Gender gender,
@@ -69,7 +74,6 @@ public class UserProfile extends BaseId<Long> {
         this.cap = cap;
     }
 
-
-
-
+    public UserProfile() {
+    }
 }
