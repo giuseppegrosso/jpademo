@@ -18,12 +18,12 @@ import java.util.Optional;
 /**
  * caricamento iniziale database.
  */
-@Configuration
+//@Configuration
 @Slf4j
 public class LoadDatabase {
 
 
-    @Bean
+    //@Bean
     public CommandLineRunner LoadDatabaseTest(
             UserRepository userRepository,
             UserProfileRepository userProfileRepository

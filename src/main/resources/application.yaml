@@ -3,23 +3,11 @@ server:
   port: 8092
   servlet:
     contextPath: /jpademo
-spring:
-  jpa:
-    database-platform: it.plansoft.demojpa.sql3.dialect.SQLiteDialect
-    #hibernate.ddl-auto: update
-    hibernate.ddl-auto: create-drop
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql=true: true
-  datasource:
-    url: jdbc:sqlite:src/main/resources/jpademo.db
-    driver-class-name: org.sqlite.JDBC
-#    username: admin
-#    password: admin
 
-# impostazioni per hibernate
-hibernate:
-  hbm2ddl:
-    auto: none
-  show-sql: true
+
+# configurazione del server
+spring:
+  profiles:
+    active: sqlite
+    #active: mysql
+    #active: postgres
