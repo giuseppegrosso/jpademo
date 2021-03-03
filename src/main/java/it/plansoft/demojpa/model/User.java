@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
 
@@ -38,13 +40,7 @@ public class User extends BaseId<Long> {
 	private String password;
 
 
-	//@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-	@OneToOne(
-			mappedBy = "user",
-			cascade = CascadeType.ALL,
-			orphanRemoval = true,
-			fetch = FetchType.LAZY
-	)
+	@OneToOne(cascade = CascadeType.ALL) @JoinColumn( name = "userprofile_id" )
 	private UserProfile userProfile;
 
 	public void setUserProfile(UserProfile userProfile) {

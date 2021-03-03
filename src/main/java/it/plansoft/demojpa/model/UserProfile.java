@@ -48,8 +48,7 @@ public class UserProfile extends BaseId<Long> {
     @Column(name = "cap")
     private String cap;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "userProfile")
     @JsonIgnore
     private User user;
 

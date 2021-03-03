@@ -1,5 +1,6 @@
 package it.plansoft.demojpa.controller;/* ggrosso created on 21/02/2021 inside the package - it.plansoft.demojpa.controller */
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +15,8 @@ import it.plansoft.demojpa.service.BaseCrudService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
+import javax.transaction.Transactional;
+
 @NoArgsConstructor
 public class BaseCrudController<SERVICE extends BaseCrudService<REPOSITORY, MODEL, ID>, REPOSITORY extends JpaRepository<MODEL, ID>, MODEL, ID>
 		implements ICrudController<MODEL, ID> {
@@ -50,13 +52,24 @@ public class BaseCrudController<SERVICE extends BaseCrudService<REPOSITORY, MODE
 	}
 
 	@Override
+	@PostMapping("/addAll")
+	public ResponseEntity<List<MODEL>> saveAll(@RequestBody List<MODEL> model) {
+		List<MODEL> mout = new ArrayList<>();
+		for (MODEL m: model) {
+			mout.add(m);
+			service.save(m);
+		}
+		return ResponseEntity.ok(mout);
+	}
+
+	@Override
 	@DeleteMapping("/")
 	public void delete(@RequestBody MODEL model) {
 		service.delete(model);
 	}
 
 	@Override
-	@PostMapping("/{id}")
+	@DeleteMapping("/{id}")
 	public void deleteById(@PathVariable ID id) {
 		service.deleteById(id);
 	}
