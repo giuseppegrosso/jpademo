@@ -1,0 +1,8 @@
+server:
+  port: 8091
+
+
+# configurazione del server
+spring:
+  profiles:
+    active: h2
