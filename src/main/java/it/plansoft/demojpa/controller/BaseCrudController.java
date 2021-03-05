@@ -79,4 +79,10 @@ public class BaseCrudController<SERVICE extends BaseCrudService<REPOSITORY, MODE
 	public ResponseEntity<MODEL> update(@RequestBody MODEL model) {
 		return ResponseEntity.ok(service.save(model));
 	}
+
+	@Override
+	@PutMapping("/{id}")
+	public ResponseEntity<MODEL> update(@PathVariable ID id, @RequestBody MODEL model) {
+		return ResponseEntity.ok(service.save(model));
+	}
 }

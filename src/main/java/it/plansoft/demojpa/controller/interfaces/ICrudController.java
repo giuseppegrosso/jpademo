@@ -27,5 +27,7 @@ public interface ICrudController<MODEL, ID> {
 
     ResponseEntity<MODEL> update(MODEL model);
 
+    ResponseEntity<MODEL> update(ID id, MODEL model);
+
 
 }
